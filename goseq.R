@@ -73,14 +73,16 @@ get_genes_kegg_no_pathview <- function(cat, data, prefix) {
   d = data.frame(cat, data[mm, ]$ENSEMBL, data[mm,]$ENTREZID,
                  data[mm,]$SYMBOL, data[mm, ]$log2.fold_change.)
   filename = paste(prefix, cat, sep="_")
-  write.table(d, filename, sep="\t", row.names=F,
-              col.names=F, quote=F)
+  #write.table(d, filename, sep="\t", row.names=F,
+  #            col.names=F, quote=F)
   return(d)
 }
 
-df = lapply(KEGG.sig[-4,]$category,
-            get_genes_kegg, de.genes.fc.path, "pathway_genes")
+#df = lapply(KEGG.sig$category,
+#            get_genes_kegg, de.genes.fc.path, "pathway_genes")
 
-df = lapply(KEGG.sig[4,]$category,
+df = lapply(KEGG.sig$category,
             get_genes_kegg_no_pathview,
             de.genes.fc.path, "pathway_genes")
+
+write.table(KEGG.sig, 'KEGG_pathways.txt', sep='\t', quote=F)
