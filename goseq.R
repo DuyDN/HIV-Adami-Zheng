@@ -78,10 +78,10 @@ get_genes_kegg_no_pathview <- function(cat, data, prefix) {
   return(d)
 }
 
-#df = lapply(KEGG.sig$category,
-#            get_genes_kegg, de.genes.fc.path, "pathway_genes")
+df = lapply(KEGG.sig[-4,]$category,
+           get_genes_kegg, de.genes.fc.path, "pathway_genes")
 
-df = lapply(KEGG.sig$category,
+df = lapply(KEGG.sig[4,]$category,
             get_genes_kegg_no_pathview,
             de.genes.fc.path, "pathway_genes")
 
