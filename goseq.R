@@ -34,7 +34,7 @@ KEGG$padjust = p.adjust(KEGG$over_represented_pvalue,
                         method="BH")
 
 # Get pathway names for significant patways
-KEGG.sig = KEGG[KEGG$padjust<0.05,]
+KEGG.sig = KEGG[KEGG$padjust<0.25,]
 
 pathway = stack(mget(KEGG.sig$category, KEGGPATHID2NAME))
 
